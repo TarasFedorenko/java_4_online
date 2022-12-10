@@ -42,10 +42,9 @@ echo 'run level 2 with external library'
 
 cd ./java_level_2
 
-javac -sourcepath ./src -d build/classes -cp ./library/commons-lang3-3.11.jar src/ua/com/alevel/test/Hard.java src/ua/com/alevel/TooHard.java
-java -cp build/classes/:./library/commons-lang3-3.11.jar:. ua.com.alevel.TooHard
+. ./run_level_2.sh
 
 
-cd ../
+cd ../../
 
-. ./remove-class.sh
+find . -name "*.class" -type f -print0 | xargs -0 /bin/rm -f
