@@ -1,5 +1,5 @@
 
-echo 'RUN Six Degree version 1'
+-echo 'RUN Six Degree version 1'
 
 java -jar ./hw_2_six_degrees_separated/target/six_degrees_separated.jar
 
