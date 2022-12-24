@@ -2,9 +2,8 @@ package ua.com.alevel;
 
 class FBIagent {
     private String name;
-    private int id;
+    private String id;
     private String rank;
-    boolean hasAGun;
 
     public String getName() {
         return name;
@@ -14,11 +13,11 @@ class FBIagent {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -30,11 +29,10 @@ class FBIagent {
         this.rank = rank;
     }
 
-    public boolean isHasAGun() {
-        return hasAGun;
-    }
-
-    public void setHasAGun(boolean hasAGun) {
-        this.hasAGun = hasAGun;
+    @Override
+    public String toString() {
+        return "FBIAgent name= " + name +
+                ", id=" + id +
+                ", rank= " + rank+ "|";
     }
 }
