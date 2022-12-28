@@ -1,13 +1,12 @@
 package ua.com.alevel;
 
 class FBIagentStorage {
-    static int reserve;
 
+    static int reserve;
     private static FBIagent[] fbiAgents = new FBIagent[5];
     static FBIagent[] tempArray;
 
-    private FBIagentStorage() {
-    }
+    private FBIagentStorage() {}
 
     public static FBIagent[] getAllFbiAgents() {
         return fbiAgents;
@@ -37,7 +36,8 @@ class FBIagentStorage {
                     return;
                 }
             }
-        }System.out.println("Wrong ID");
+        }
+        System.out.println("Wrong ID");
     }
 
     public static FBIagent getFbiAgent(String id) {
@@ -50,5 +50,4 @@ class FBIagentStorage {
         }
     return null;
     }
-
-    }
+}
