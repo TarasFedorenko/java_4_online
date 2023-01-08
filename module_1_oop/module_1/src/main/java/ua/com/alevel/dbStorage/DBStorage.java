@@ -148,7 +148,7 @@ public class DBStorage {
                 if (actorsMovie[i] == null) {
                     actorsMovie[i] = actorId;
                     return;
-                }else if (actorsMovie[i].equals(actorId)){
+                } else if (actorsMovie[i].equals(actorId)) {
                     System.out.println("This actor already in list");
                     return;
                 }
@@ -190,8 +190,8 @@ public class DBStorage {
             for (int i = 0; i < moviesActor.length; i++) {
                 if (moviesActor[i] == null) {
                     moviesActor[i] = movieId;
-                    return;}
-                else if (moviesActor[i].equals(movieId)){
+                    return;
+                } else if (moviesActor[i].equals(movieId)) {
                     System.out.println("This movie already in list");
                     return;
                 }
@@ -229,14 +229,16 @@ public class DBStorage {
         if (movie == null) {
             System.out.println("Wrong ID");
         } else {
-        String[] actorsMovie = movie.getActorIdList();
-        for (int i = 0; i < actorsMovie.length; i++) {
-            if (actorsMovie[i] != null) {
-                if (actorsMovie[i].equals(actorId)) {
-                    actorsMovie[i] = null;
-                    return;}
+            String[] actorsMovie = movie.getActorIdList();
+            for (int i = 0; i < actorsMovie.length; i++) {
+                if (actorsMovie[i] != null) {
+                    if (actorsMovie[i].equals(actorId)) {
+                        actorsMovie[i] = null;
+                        return;
+                    }
                 }
-            }System.out.println("Wrong ID");
+            }
+            System.out.println("Wrong ID");
         }
 
     }
@@ -247,14 +249,16 @@ public class DBStorage {
         if (actor == null) {
             System.out.println("Wrong ID");
         } else {
-        String[] movieActors = actor.getMovieIdList();
-        for (int i = 0; i < movieActors.length; i++) {
-            if (movieActors[i] != null) {
-                if (movieActors[i].equals(movieId)) {
-                    movieActors[i] = null;
-                    return;}
+            String[] movieActors = actor.getMovieIdList();
+            for (int i = 0; i < movieActors.length; i++) {
+                if (movieActors[i] != null) {
+                    if (movieActors[i].equals(movieId)) {
+                        movieActors[i] = null;
+                        return;
+                    }
                 }
-            } System.out.println("Wrong ID");
+            }
+            System.out.println("Wrong ID");
         }
 
     }

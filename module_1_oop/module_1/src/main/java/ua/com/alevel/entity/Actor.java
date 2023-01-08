@@ -9,25 +9,28 @@ public class Actor extends BaseEntity {
 
     private String[] movieIdList = new String[5];
 
-
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public String getSurName(){
+
+    public String getSurName() {
         return surname;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         if (name.matches(".*\\d.*")) {
             System.out.println("Name cannot contain numbers");
         } else {
-        this.name=name;}
+            this.name = name;
+        }
     }
-    public void setSurname(String surname){
+
+    public void setSurname(String surname) {
         if (surname.matches(".*\\d.*")) {
             System.out.println("Surname cannot contain numbers");
         } else {
-        this.surname=surname;}
+            this.surname = surname;
+        }
     }
 
     public String[] getMovieIdList() {

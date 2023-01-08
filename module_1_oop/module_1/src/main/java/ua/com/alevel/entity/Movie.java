@@ -2,27 +2,31 @@ package ua.com.alevel.entity;
 
 import java.util.Arrays;
 
-public class Movie extends BaseEntity{
+public class Movie extends BaseEntity {
 
     private String title;
     private String genre;
 
-    private String [] actorIdList = new String[5];
+    private String[] actorIdList = new String[5];
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
-    public String getTitle(){
+
+    public String getTitle() {
         return title;
     }
-    public void setGenre(String genre){
+
+    public void setGenre(String genre) {
         if (genre.matches(".*\\d.*")) {
             System.out.println("Genre cannot contain numbers");
         } else {
-        this.genre=genre;}
+            this.genre = genre;
+        }
     }
-    public void setTitle(String title){
-        this.title=title;
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String[] getActorIdList() {
@@ -30,7 +34,7 @@ public class Movie extends BaseEntity{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Movie{" +
                 "genre='" + genre + '\'' +
                 ", title='" + title + '\'' +
