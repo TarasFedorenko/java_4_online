@@ -10,7 +10,6 @@ import java.util.Optional;
 public class ActorMovieCrudTest {
 
     private static final ServiceActorMovie serviceActorMovie = new ServiceActorMovie();
-
     private static final String NAME = "testName";
     private static final String SURNAME = "testSurname";
     private static final String TITLE = "testTitle";
@@ -21,10 +20,7 @@ public class ActorMovieCrudTest {
     private static final String NEWGENRE = "newGenre";
     private static final String WRONGNAME = "petya 349";
     private static final String WRONGSURNAME = "petrenko 349";
-
     private static final String WRONGGENRE = "horror 349";
-
-
     private static final int MOVIESIZE = 10;
     private static final int ACTORSIZE = 10;
 
@@ -33,7 +29,9 @@ public class ActorMovieCrudTest {
         for (int i = 0; i < ACTORSIZE; i++) {
             Actor actor = generateActor(i);
             serviceActorMovie.addActor(actor);
-        }}
+        }
+    }
+
     @BeforeAll
     public static void setUpMovie() {
         for (int i = 0; i < MOVIESIZE; i++) {
@@ -173,7 +171,7 @@ public class ActorMovieCrudTest {
     public void deleteMovieFromActorListTest() {
         Actor actor = serviceActorMovie.getAllActors().get(0);
         Optional<Movie> movie = serviceActorMovie.getAllMoviesByActor(actor.getId()).get(0);
-        serviceActorMovie.deleteMovieFromActorList(movie.get().getId(),actor.getId());
+        serviceActorMovie.deleteMovieFromActorList(movie.get().getId(), actor.getId());
         Assertions.assertEquals(serviceActorMovie.getAllMoviesByActor(actor.getId()).size(), 0);
     }
 
@@ -219,8 +217,6 @@ public class ActorMovieCrudTest {
         Assertions.assertEquals(serviceActorMovie.getAllActors().size(), ACTORSIZE);
     }
 
-
-
     @Test
     @Order(21)
     public void doNotAddNewMovieWhenGenreIsNotValid() {
@@ -231,19 +227,17 @@ public class ActorMovieCrudTest {
         Assertions.assertEquals(serviceActorMovie.getAllMovies().size(), MOVIESIZE);
     }
 
-
     public static Actor generateActor(int i) {
         Actor actor = new Actor();
-        actor.setName(NAME + (char)i);
-        actor.setSurname(SURNAME + (char)i);
+        actor.setName(NAME + (char) i);
+        actor.setSurname(SURNAME + (char) i);
         return actor;
     }
 
     public static Movie generateMovie(int i) {
         Movie movie = new Movie();
-        movie.setTitle(TITLE + (char)i);
-        movie.setGenre(GENRE + (char)i);
+        movie.setTitle(TITLE + (char) i);
+        movie.setGenre(GENRE + (char) i);
         return movie;
     }
-
 }
