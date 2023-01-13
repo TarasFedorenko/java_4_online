@@ -8,9 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-;
-
 public class UsersInterface {
+
     public void start() throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Main menu");
@@ -20,6 +19,7 @@ public class UsersInterface {
             crud(bf, select);
         }
     }
+
     private void menu() {
         System.out.println();
         System.out.println("To add new actor press - 1");
@@ -43,6 +43,7 @@ public class UsersInterface {
         System.out.println("To delete movie from actors list press - 16");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - -");
     }
+
     private void crud(BufferedReader bf, String select) throws IOException {
         switch (select) {
             case "1":
@@ -106,41 +107,48 @@ public class UsersInterface {
         Actor actor = new Actor();
         actor.setName(name);
         actor.setSurname(surname);
-        if (actor.getName()==null||actor.getSurName()==null){
+        if (actor.getName() == null || actor.getSurName() == null) {
             System.out.println("Incorrect data, please try again");
-        } else{
-        DBStorage.addActor(actor);}
+        } else {
+            DBStorage.addActor(actor);
+        }
     }
-    private void addNewMovie(BufferedReader bf)throws IOException{
+
+    private void addNewMovie(BufferedReader bf) throws IOException {
         System.out.println("You want to create profile of new movie");
         System.out.println("Please enter movies title");
-        String title =bf.readLine();
+        String title = bf.readLine();
         System.out.println("Please enter movies genre");
         String genre = bf.readLine();
         Movie movie = new Movie();
         movie.setTitle(title);
         movie.setGenre(genre);
-        if(movie.getGenre()==null){
+        if (movie.getGenre() == null) {
             System.out.println("Incorrect data, please try again");
-        } else{
-        DBStorage.addMovie(movie);}
+        } else {
+            DBStorage.addMovie(movie);
+        }
 
     }
+
     private void addActorInMovie(BufferedReader bf) throws IOException {
         System.out.println("You want add actor to some movie");
         System.out.println("Please enter actor ID");
         String actorID = bf.readLine();
         System.out.println("Please enter movie ID");
         String movieID = bf.readLine();
-        DBStorage.addActorToMovie(actorID,movieID);
+        DBStorage.addActorToMovie(actorID, movieID);
     }
+
     private void addMovieInActor(BufferedReader bf) throws IOException {
         System.out.println("You want add movie to some actor");
         System.out.println("Please enter actor ID");
         String actorID = bf.readLine();
         System.out.println("Please enter movie ID");
         String movieID = bf.readLine();
-        DBStorage.addMovieToActor(actorID,movieID);}
+        DBStorage.addMovieToActor(actorID, movieID);
+    }
+
     private void findActor(BufferedReader bf) throws IOException {
         System.out.println("You want to find actor");
         System.out.println("Please enter actor ID");
@@ -149,9 +157,11 @@ public class UsersInterface {
         if (actor == null) {
             System.out.println("Wrong ID");
         } else {
-            System.out.println(actor);}
+            System.out.println(actor);
+        }
 
     }
+
     private void findMovie(BufferedReader bf) throws IOException {
         System.out.println("You want to find movie");
         System.out.println("Please enter movie ID");
@@ -160,33 +170,38 @@ public class UsersInterface {
         if (movie == null) {
             System.out.println("Wrong ID");
         } else {
-            System.out.println(movie);}
+            System.out.println(movie);
+        }
     }
-    private void findAllActor( ){
-        System.out.println("You want to find all actors");
-        Actor[]actors = DBStorage.getAllActors();
-        System.out.println(Arrays.toString(actors));
 
+    private void findAllActor() {
+        System.out.println("You want to find all actors");
+        Actor[] actors = DBStorage.getAllActors();
+        System.out.println(Arrays.toString(actors));
     }
-    private void findAllMovie( ){
+
+    private void findAllMovie() {
         System.out.println("You want to find all movies");
-        Movie [] movies = DBStorage.getAllMovies();
+        Movie[] movies = DBStorage.getAllMovies();
         System.out.println(Arrays.toString(movies));
     }
+
     private void findAllActorsInMovie(BufferedReader bf) throws IOException {
         System.out.println("You want to find all actors in movie");
         System.out.println("Please enter movie ID");
         String movieID = bf.readLine();
-        Actor[]actors = DBStorage.getAllActorsByMovie(movieID);
+        Actor[] actors = DBStorage.getAllActorsByMovie(movieID);
         System.out.println(Arrays.toString(actors));
     }
+
     private void findAllMoviesInActor(BufferedReader bf) throws IOException {
         System.out.println("You want to find all movie in actor");
         System.out.println("Please enter actor ID");
         String actorID = bf.readLine();
-        Movie[]movies = DBStorage.getAllMoviesByActor(actorID);
+        Movie[] movies = DBStorage.getAllMoviesByActor(actorID);
         System.out.println(Arrays.toString(movies));
     }
+
     private void changeActor(BufferedReader bf) throws IOException {
         System.out.println("You want to change actors profile");
         System.out.println("Please enter actor ID");
@@ -204,7 +219,7 @@ public class UsersInterface {
             System.out.println("Generate new ID number of actor");
             String newID = DBStorage.generateActorID();
             actor.setId(newID);
-            System.out.println("New ID number is "+ newID);
+            System.out.println("New ID number is " + newID);
 
         }
     }
@@ -226,29 +241,32 @@ public class UsersInterface {
             System.out.println("Generate new ID number of movie");
             String newID = DBStorage.generateMovieID();
             movie.setId(newID);
-            System.out.println("New ID number is "+ newID);
-
+            System.out.println("New ID number is " + newID);
         }
     }
+
     private void deleteProfileActor(BufferedReader bf) throws IOException {
         System.out.println("You want to delete actors profile");
         System.out.println("Please enter actors ID");
         String actorsID = bf.readLine();
         DBStorage.deleteActor(actorsID);
     }
+
     private void deleteProfileMovie(BufferedReader bf) throws IOException {
         System.out.println("You want to delete movies profile");
         System.out.println("Please enter movie ID");
         String moviesID = bf.readLine();
         DBStorage.deleteMovie(moviesID);
     }
+
     private void deleteActorInMovie(BufferedReader bf) throws IOException {
         System.out.println("You want delete actor from some movie");
         System.out.println("Please enter actor ID");
         String actorID = bf.readLine();
         System.out.println("Please enter movie ID");
         String movieID = bf.readLine();
-        DBStorage.deleteActorFromMovieList(actorID,movieID);}
+        DBStorage.deleteActorFromMovieList(actorID, movieID);
+    }
 
     private void deleteMovieInActor(BufferedReader bf) throws IOException {
         System.out.println("You want delete movie from some actor");
@@ -256,11 +274,11 @@ public class UsersInterface {
         String actorID = bf.readLine();
         System.out.println("Please enter movie ID");
         String movieID = bf.readLine();
-        DBStorage.deleteMovieFromActorList(movieID,actorID);}
+        DBStorage.deleteMovieFromActorList(movieID, actorID);
+    }
 
     private void quit() {
         System.exit(0);
     }
-
-    }
+}
 
