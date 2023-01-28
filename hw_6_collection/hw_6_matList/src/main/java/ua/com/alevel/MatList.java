@@ -134,7 +134,6 @@ public class MatList<E extends Number> implements List<E> {
         if (index > size || index < 0) {
             throw new IndexOutOfBoundsException(index);
         }
-
         return (E) elementData[index];
     }
 
@@ -444,7 +443,6 @@ public class MatList<E extends Number> implements List<E> {
                     action.accept(es[i]);
                 indexIter = i;
                 lastIndexIter = i - 1;
-
             }
         }
     }
@@ -468,7 +466,6 @@ public class MatList<E extends Number> implements List<E> {
         }
 
         public E previous() {
-
             int i = this.indexIter - 1;
             if (i < 0) {
                 throw new NoSuchElementException();
@@ -486,24 +483,22 @@ public class MatList<E extends Number> implements List<E> {
             if (this.lastIndexIter < 0) {
                 throw new IllegalStateException();
             } else {
-
                 try {
                     MatList.this.set(this.lastIndexIter, e);
                 } catch (IndexOutOfBoundsException var3) {
-
+                    // ну брось тут что-нить)))
                 }
             }
         }
 
         public void add(E e) {
-
             try {
                 int i = this.indexIter;
                 MatList.this.add(i, e);
                 this.indexIter = i + 1;
                 this.lastIndexIter = -1;
             } catch (IndexOutOfBoundsException var3) {
-
+                // ну брось тут что-нить)))
             }
         }
     }
