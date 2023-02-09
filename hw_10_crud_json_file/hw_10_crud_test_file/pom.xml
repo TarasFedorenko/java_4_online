@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.com.alevel</groupId>
-    <artifactId>hw_10_crud_test_file</artifactId>
+    <artifactId>hw_10_json_crud</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>17</java.version>
