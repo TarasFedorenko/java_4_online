@@ -1,6 +1,5 @@
 package ua.com.alevel;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +12,6 @@ public class ControllerTextAnalyze {
         System.out.println("Please write the text");
         String str = bf.readLine();
         textAnalyze.analyzeThat(str);
-        bf.close();
+        bf.close(); // а почему не try с ресурсами?)
     }
 }

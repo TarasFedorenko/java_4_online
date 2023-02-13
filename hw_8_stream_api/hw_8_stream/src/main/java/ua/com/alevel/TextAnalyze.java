@@ -45,6 +45,4 @@ public class TextAnalyze {
         }
         System.out.format("+----------------+--------+-------+--------+%n");
     }
-
 }
-

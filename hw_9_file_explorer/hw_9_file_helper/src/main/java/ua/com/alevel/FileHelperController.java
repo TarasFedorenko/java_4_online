@@ -30,7 +30,6 @@ public class FileHelperController {
         }
     }
 
-
     private void menu() {
         System.out.println();
         System.out.println(color.BLUE + "To create file of directory enter" + color.PURPLE + "- 1 ");
