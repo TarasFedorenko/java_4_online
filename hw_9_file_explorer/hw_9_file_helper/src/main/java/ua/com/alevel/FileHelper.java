@@ -41,7 +41,6 @@ public class FileHelper {
     }
 
     public void copyDirectory(File sourceDirectory, File destinationDirectory) throws IOException {
-
         if (!destinationDirectory.exists()) {
             destinationDirectory.mkdir();
         }
@@ -74,7 +73,6 @@ public class FileHelper {
         File deleteFile = new File(filePath);
         deleteFile.delete();
     }
-
 
     public boolean removeDir(File innerPath) {
         File[] allContents = innerPath.listFiles();

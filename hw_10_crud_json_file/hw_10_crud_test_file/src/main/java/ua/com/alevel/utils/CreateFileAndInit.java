@@ -2,7 +2,6 @@ package ua.com.alevel.utils;
 
 import java.io.*;
 
-
 public class CreateFileAndInit {
 
     public void createInitActor() throws IOException {
@@ -21,7 +20,3 @@ public class CreateFileAndInit {
         fileWrite.flush();
     }
 }
-
-
-
-
