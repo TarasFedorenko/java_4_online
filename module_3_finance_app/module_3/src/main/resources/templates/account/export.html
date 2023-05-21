@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Export CSV</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            EXPORT CSV
+        </div>
+        <div class="card-body">
+            <form action="#" th:action="@{'/accounts/download'}" th:method="POST" th:object="${account} ">
+                <input th:name="accountId" th:value="${account.id}" type="hidden"/>
+                <div class="form-group">
+                    <label for="fromDate">Date From</label>
+                    <input class="form-control" id="fromDate" placeholder="dd/MM/yyyy" th:name="fromDate" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="toDate">Date To</label>
+                    <input class="form-control" id="toDate" placeholder="dd/MM/yyyy" th:name="toDate" type="text"/>
+                </div>
+                <button class="btn btn-primary" type="submit">Download CSV!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

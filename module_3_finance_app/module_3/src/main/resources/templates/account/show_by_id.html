@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find clients</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card mt-3">
+        <div class="card-header">
+            <span th:text="${account.getAccountName()}">VALUE</span>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Account Name</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Balance</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${account.getAccountName()}"/>
+                    <td th:text="${account.getAccountNumber()}"/>
+                    <td th:text="${account.getClient().fullName}"/>
+                    <td th:text="${account.getBalance()}"/>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/accounts/delete/' + ${account.id}}"
+                           type="button">Delete </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="collapseOne" aria-expanded="true" class="accordion-button"
+                                data-bs-target="#collapseOne" data-bs-toggle="collapse" type="button">
+                            Credit Operations
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse show" data-bs-parent="#accordionExample" id="collapseOne">
+                        <div class="accordion-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Recipient</th>
+                                    <th scope="col">Recipient Account</th>
+                                    <th scope="col">Operation Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="creditOperation : ${account.getCreditOperations()}">
+                                    <td th:text="${creditOperation.getAmount()}"/>
+                                    <td th:text="${creditOperation.getRecipientAccount().client.fullName}"/>
+                                    <td th:text="${creditOperation.getRecipientAccount().accountName}"/>
+                                    <td th:text="${creditOperation.getOperationDate()}"/>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button aria-controls="collapseTwo" aria-expanded="false" class="accordion-button collapsed"
+                                data-bs-target="#collapseTwo" data-bs-toggle="collapse" type="button">
+                            Debit Operations
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" data-bs-parent="#accordionExample" id="collapseTwo">
+                        <div class="accordion-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Sender</th>
+                                    <th scope="col">Sender Account</th>
+                                    <th scope="col">Operation Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="debitOperation : ${account.getDebitOperations()}">
+                                    <td th:text="${debitOperation.getAmount()}"/>
+                                    <td th:text="${debitOperation.getSenderAccount().client.fullName}"/>
+                                    <td th:text="${debitOperation.getSenderAccount().accountName}"/>
+                                    <td th:text="${debitOperation.getOperationDate()}"/>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary"
+               th:href="@{'/operations/' + ${account.client.id} + '/' + ${account.id} + '/new'}" type="button">Send
+                money!</a>
+            <br/>
+            <br/>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary" th:href="@{'/accounts/' + ${account.id} + '/export'}"
+               type="button">Export CSV</a>
+            <br/>
+            <br/>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary" th:href="@{'/clients/' + ${account.client.id}}"
+               type="button">BACK</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

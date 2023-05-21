@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All clients</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card mt-3">
+        <div class="card-header">
+            All clients
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Client</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="client : ${clients}">
+
+                    <td th:text="${client.fullName}"/>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/clients/'+ ${client.id}}" type="button">Details </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary" th:href="@{'/clients/new'}" type="button">Create new
+                client</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

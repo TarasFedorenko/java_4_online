@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>New client</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            New Client
+        </div>
+        <div class="card-body">
+            <form action="#" th:action="@{/clients}" th:method="POST" th:object="${client}">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input class="form-control" id="fullName" placeholder="fullName" th:field="*{fullName}" type="text">
+                    <div style="color:red" th:errors="*{fullName}" th:if="${#fields.hasErrors('fullName')}">Full name
+                        error
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input class="form-control" id="email" placeholder="email" th:field="*{email}" type="text"/>
+                    <div style="color:red" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">Email error</div>
+                </div>
+                <button class="btn btn-primary" type="submit">New client</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

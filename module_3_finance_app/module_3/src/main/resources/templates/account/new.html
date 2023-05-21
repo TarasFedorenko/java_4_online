@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>New account</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            NEW ACCOUNT
+        </div>
+        <div class="card-body">
+            <form action="#" th:action="@{'/accounts'}" th:method="POST" th:object="${account} ">
+                <div class="form-group">
+                    <label for="accountName">Account name</label>
+                    <input class="form-control" id="accountName" placeholder="accountName" th:field="*{accountName}"
+                           type="text">
+                    <div style="color:red" th:errors="*{accountName}" th:if="${#fields.hasErrors('accountName')}">
+                        Account name error
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="balance">Balance</label>
+                    <input class="form-control" id="balance" placeholder="balance" th:field="*{balance}" type="text"/>
+                    <div style="color:red" th:errors="*{balance}" th:if="${#fields.hasErrors('balance')}">Balance
+                        error
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">New account</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

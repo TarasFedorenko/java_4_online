@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/layout}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find clients</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card mt-3">
+        <div class="card-header">
+            <span th:text="${client.getFullName()}">VALUE</span>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">E-mail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${client.getEmail()}"/>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/clients/'+ ${client.id} + '/edit'}"
+                           type="button">Update </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Account name</th>
+                    <th scope="col">Account number</th>
+                    <th scope="col">Balance</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="account : ${client.accounts}">
+                    <td th:text="${account.getAccountName()}"/>
+                    <td th:text="${account.getAccountNumber()}"/>
+                    <td th:text="${account.getBalance()}"/>
+
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/accounts/' + ${account.id}}" type="button">Details </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary" th:href="@{'/accounts/' + ${id} + '/new'}" type="button">Create
+                new account</a>
+            <br/>
+            <br/>
+            <br/>
+            <a aria-disabled="true" class="btn btn-primary" th:href="@{'/clients'}" type="button">BACK</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

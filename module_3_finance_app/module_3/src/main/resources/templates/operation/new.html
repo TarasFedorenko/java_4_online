@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      layout:decorate="~{layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>New account</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            NEW OPERATION
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Sender full name</th>
+                    <th scope="col">Sender account name</th>
+                    <th scope="col">Sender account number</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${sender.fullName}"/>
+                    <td th:text="${sender_account.accountName}"/>
+                    <td th:text="${sender_account.accountNumber}"/>
+                </tr>
+                </tbody>
+            </table>
+            <form action="#" th:action="@{'/operations'}" th:method="POST">
+                <input th:name="fromAccNumber" th:value="${sender_account.accountNumber}" type="hidden"/>
+                <div class="form-group">
+                    <label for="toAccNumber">Account Number</label>
+                    <input class="form-control" id="toAccNumber" placeholder="accountNumber" th:name="toAccNumber"
+                           type="text"/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input class="form-control" id="amount" placeholder="amount" th:name="amount" type="text"/>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Send money!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
